@@ -151,18 +151,39 @@ def custom_index(input_list, value):
 
 def custom_count(input_list, value):
     """custom_count(input_list, value) imitates input_list.count(value)"""
-    pass
+    counter = 0
+    for item in input_list:
+        if item == value:
+            counter += 1
+    return counter
+
 
 def custom_reverse(input_list):
     """custom_reverse(input_list) imitates input_list.reverse()"""
-    pass
+    half_length = custom_len(input_list) // 2
+    for i in range(half_length):
+        # Swap the corresponding pair of values in place.
+        input_list[i], input_list[-i-1] = input_list[-i-1], input_list[i]
 
-def custom_contains(input_list, value):
+
+def custom_contains(input_list, value): 
     """custom_contains(input_list, value) imitates (value in input_list)"""
-    pass
+    for i in input_list:
+        if i == value:
+            return True
+    return False
+
 
 def custom_equality(some_list, another_list):
     """custom_equality(some_list, another_list) imitates
     (some_list == another_list)
     """
-    pass
+    if custom_len(some_list) != custom_len(another_list):
+        return False
+
+    length = custom_len(some_list)
+
+    for i in range(length):
+        if some_list[i] != another_list[i]:
+            return False
+    return True
